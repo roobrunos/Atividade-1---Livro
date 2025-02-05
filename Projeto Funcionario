@@ -1,0 +1,82 @@
+package ProjetoFuncionario;
+
+public class Funcionario {
+    private String nome;
+    private String salario;
+
+
+    public Funcionario(String nome, String salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public String getSalario() {
+        return salario;
+    }
+    public void setSalario(String salario) {
+        this.salario = salario;
+    }
+
+    public void aumentarSalario(double aumento) {
+        this.salario = this.salario + aumento;
+    }
+    public void exibirInfo() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Salário: R$ " + salario);
+    }
+}
+______________________________________
+
+
+package ProjetoFuncionario;
+
+public class Gerente extends Funcionario {
+    private String departamento;
+
+    public Gerente(String nome, double salario, String departamento) {
+        super(nome, salario);
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo();
+        System.out.println("Departamento: " + departamento);
+    }
+}
+
+____________________________________
+
+
+package ProjetoFuncionario;
+
+public class Main {
+    public static void main(String[] args) {
+        Funcionario funcionario = new Funcionario("Carlos Silva", 3000);
+        Gerente gerente = new Gerente("Ana Souza", 5000, "TI");
+
+        System.out.println("Antes do aumento:");
+        funcionario.exibirInfo();
+        System.out.println();
+        gerente.exibirInfo();
+
+        funcionario.aumentarSalario(10);
+        gerente.aumentarSalario(15);
+
+        System.out.println("\nDepois do aumento:");
+        funcionario.exibirInfo();
+        System.out.println();
+        gerente.exibirInfo();
+    }
+}
+
